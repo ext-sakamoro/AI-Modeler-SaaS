@@ -182,7 +182,7 @@ async fn handle_ws(socket: WebSocket, state: Arc<AppState>, session_id: String) 
     // Send broadcast messages to this client
     let send_task = tokio::spawn(async move {
         while let Ok(msg) = rx.recv().await {
-            if sender.send(Message::Text(msg.into())).await.is_err() {
+            if sender.send(Message::Text(msg)).await.is_err() {
                 break;
             }
         }
