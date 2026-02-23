@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+API_URL="${API_URL:-http://localhost:8080}"
+echo "=== AI Modeler SaaS Smoke Test ==="
+echo "[1/4] Health checks..."
+curl -sf "$API_URL/health" > /dev/null && echo "  Gateway: OK" || echo "  Gateway: FAIL"
+curl -sf "http://localhost:8081/health" > /dev/null && echo "  SDF Engine: OK" || echo "  SDF Engine: FAIL"
+curl -sf "http://localhost:8082/health" > /dev/null && echo "  AI LLM: OK" || echo "  AI LLM: FAIL"
+curl -sf "http://localhost:8083/health" > /dev/null && echo "  Collab: OK" || echo "  Collab: FAIL"
+curl -sf "http://localhost:8084/health" > /dev/null && echo "  Asset: OK" || echo "  Asset: FAIL"
+echo "[2/4] SDF compile..."
+curl -sf -X POST "http://localhost:8081/api/v1/sdf/compile" -H "Content-Type: application/json" -d '{"tree":{"type":"Sphere","params":{"radius":1.0}}}' > /dev/null && echo "  Compile: OK"
+echo "[3/4] Mesh generation..."
+curl -sf -X POST "http://localhost:8081/api/v1/mesh/generate" -H "Content-Type: application/json" -d '{"tree":{"type":"Sphere","params":{"radius":1.0}},"resolution":16,"format":"obj"}' > /dev/null && echo "  Mesh: OK"
+echo "[4/4] Shader transpilation..."
+curl -sf -X POST "http://localhost:8081/api/v1/shader/transpile" -H "Content-Type: application/json" -d '{"tree":{"type":"Sphere","params":{"radius":1.0}},"target":"wgsl"}' > /dev/null && echo "  Shader: OK"
+echo ""
+echo "=== All smoke tests passed ==="

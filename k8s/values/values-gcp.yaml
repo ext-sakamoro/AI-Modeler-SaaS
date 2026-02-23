@@ -1,0 +1,11 @@
+# GCP GKE overrides
+ingress:
+  className: gce
+
+postgres:
+  enabled: false
+  # Use Cloud SQL instead
+
+sdfEngine:
+  nodeSelector:
+    cloud.google.com/machine-family: c2

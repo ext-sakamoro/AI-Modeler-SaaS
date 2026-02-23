@@ -1,0 +1,7 @@
+# Azure AKS overrides
+ingress:
+  className: azure-application-gateway
+
+postgres:
+  enabled: false
+  # Use Azure Database for PostgreSQL instead

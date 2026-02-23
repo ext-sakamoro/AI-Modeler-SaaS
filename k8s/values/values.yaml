@@ -1,0 +1,98 @@
+# AI Modeler SaaS - Default Helm Values
+
+global:
+  imageRegistry: ghcr.io
+  imagePullPolicy: IfNotPresent
+
+frontend:
+  replicas: 2
+  image: ai-modeler/frontend:latest
+  port: 3000
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+
+apiGateway:
+  replicas: 2
+  image: ai-modeler/api-gateway:latest
+  port: 8080
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+
+sdfEngine:
+  replicas: 2
+  maxReplicas: 16
+  image: ai-modeler/sdf-engine:latest
+  port: 8081
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+  hpa:
+    enabled: true
+    targetCPU: 70
+
+aiLlm:
+  replicas: 1
+  image: ai-modeler/ai-llm:latest
+  port: 8082
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+collab:
+  replicas: 2
+  image: ai-modeler/collab:latest
+  port: 8083
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 256Mi
+
+asset:
+  replicas: 1
+  image: ai-modeler/asset:latest
+  port: 8084
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
+redis:
+  enabled: true
+  image: redis:7-alpine
+  port: 6379
+
+postgres:
+  enabled: true
+  image: postgres:16-alpine
+  port: 5432
+  storage: 20Gi
+
+ingress:
+  enabled: true
+  className: nginx
+  host: ai-modeler.example.com
+  tls: true

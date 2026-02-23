@@ -1,0 +1,42 @@
+name: AI Modeler SaaS CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-rust:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [sdf-engine, api-gateway, collab, asset]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: services/${{ matrix.service }}
+      - run: cd services/${{ matrix.service }} && cargo check
+      - run: cd services/${{ matrix.service }} && cargo clippy -- -D warnings
+
+  test-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r services/ai-llm/requirements.txt pytest
+      - run: cd services/ai-llm && python -m pytest tests/ -v
+
+  lint-frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: cd frontend && npm ci || npm install
+      - run: cd frontend && npm run type-check

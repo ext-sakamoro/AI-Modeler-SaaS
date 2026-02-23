@@ -1,0 +1,117 @@
+{
+  "spec_id": "ai-modeler-saas-v1",
+  "title": "AI Modeler SaaS — ALICE-SDF Cloud Platform",
+  "created_at": "2026-02-23T00:00:00+09:00",
+  "updated_at": "2026-02-23T00:00:00+09:00",
+  "version": "1.1.0",
+  "status": "draft",
+  "license": {
+    "public": "AGPL-3.0",
+    "commercial": "Proprietary (direct sales)",
+    "rationale": "AGPL-3.0 prevents SaaS free-riding by requiring source disclosure; enterprises purchase Commercial License for closed-source deployment"
+  },
+  "author": "Spec System (Automated)",
+  "requirements_count": 20,
+  "functional_requirements": 15,
+  "non_functional_requirements": 5,
+  "patterns": [
+    "microservices",
+    "api",
+    "backend",
+    "frontend",
+    "authentication",
+    "security",
+    "real-time",
+    "webgpu",
+    "saas",
+    "ai-llm",
+    "collaborative-editing",
+    "multi-format-export"
+  ],
+  "context": {
+    "core_engine": "ALICE-SDF v1.1.0 (Rust)",
+    "saas_platform": "OmniCreatorTemplate (Next.js 15)",
+    "ecosystem": "ALICE-Eco-System (63 bridges)",
+    "sdf_node_types": 126,
+    "sdf_primitives": 72,
+    "sdf_operations": 24,
+    "sdf_transforms": 7,
+    "sdf_modifiers": 23,
+    "evaluation_modes": 7,
+    "io_formats": 15,
+    "sdf_tests": 1003
+  },
+  "files": {
+    "spec": "spec.md",
+    "project_overview": "PROJECT_OVERVIEW.md",
+    "requirements": "REQUIREMENTS.md",
+    "architecture": "ARCHITECTURE.md",
+    "api_specification": "API_SPECIFICATION.md",
+    "metadata": "metadata.json",
+    "technical_requirements": "technical_requirements.json",
+    "deployment": "DEPLOYMENT.md"
+  },
+  "dependencies": {
+    "alice_sdf": {
+      "version": "1.1.0",
+      "path": "/Users/ys/ALICE-SDF",
+      "license": "AGPL-3.0 (public) + Commercial License (proprietary)"
+    },
+    "omni_creator_template": {
+      "path": "/Users/ys/OmniCreatorTemplate",
+      "stack": ["Next.js 15", "React 19", "Supabase", "Stripe"]
+    },
+    "alice_eco_system": {
+      "version": "0.3.0",
+      "path": "/Users/ys/ALICE-Eco-System",
+      "bridges_used": [
+        "bridge_sdf",
+        "bridge_physics",
+        "bridge_codec",
+        "bridge_asp",
+        "bridge_cache",
+        "bridge_font"
+      ]
+    }
+  },
+  "pricing_tiers": {
+    "_note": "All pricing is operator-configurable. No hardcoded amounts. Defaults shown are suggestions only.",
+    "free": {
+      "price": "configurable (operator sets via Stripe)",
+      "projects_default": 5,
+      "preview_resolution": "basic",
+      "export_formats": ["obj", "stl"],
+      "api_calls_per_hour_default": 100,
+      "mesh_max_resolution_default": 128
+    },
+    "pro": {
+      "price": "configurable (operator sets via Stripe)",
+      "projects_default": 100,
+      "preview_resolution": "full",
+      "export_formats": "all",
+      "api_calls_per_hour_default": 10000,
+      "mesh_max_resolution_default": 512,
+      "text_to_3d_per_day_default": 500,
+      "collaboration_users_default": 5
+    },
+    "enterprise": {
+      "price": "configurable (operator sets via Stripe)",
+      "projects_default": "unlimited",
+      "preview_resolution": "maximum",
+      "export_formats": "all + custom",
+      "api_calls_per_hour_default": "unlimited",
+      "mesh_max_resolution_default": 1024,
+      "text_to_3d_per_day_default": "unlimited",
+      "collaboration_users_default": 50,
+      "sso": true,
+      "sla": "configurable"
+    }
+  },
+  "deployment": {
+    "cloud_providers": ["aws", "gcp", "azure", "self-hosted"],
+    "kubernetes": ["EKS", "GKE", "AKS", "k3s"],
+    "one_click_deploy": true,
+    "docker_compose": true,
+    "helm_chart": true
+  }
+}

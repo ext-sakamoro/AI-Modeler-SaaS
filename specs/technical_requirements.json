@@ -1,0 +1,234 @@
+{
+  "spec_id": "ai-modeler-saas-v1",
+  "version": "1.1.0",
+  "license": {
+    "public": "AGPL-3.0",
+    "commercial": "Proprietary (direct sales by copyright holder)",
+    "agpl_obligation": "SaaS operators must publish complete service source code",
+    "commercial_exemption": "Commercial License holders are exempt from AGPL disclosure"
+  },
+  "created_at": "2026-02-23T00:00:00+09:00",
+  "technical_stack": {
+    "frontend": {
+      "framework": "Next.js 15",
+      "ui_library": "React 19",
+      "language": "TypeScript 5.x",
+      "rendering": "WebGPU (WGSL shaders)",
+      "client_sdf": "ALICE-SDF WASM",
+      "components": "Radix UI",
+      "styling": "Tailwind CSS 3.x",
+      "state_management": "Zustand 4.x",
+      "realtime": "Supabase Realtime"
+    },
+    "backend": {
+      "sdf_engine": {
+        "language": "Rust 1.75+",
+        "framework": "Axum 0.7+",
+        "core_library": "ALICE-SDF 1.1.0",
+        "async_runtime": "tokio 1.x",
+        "serialization": "serde 1.x + serde_json 1.x",
+        "simd": "wide 0.7 (AVX2/NEON)",
+        "parallel": "rayon 1.10",
+        "math": "glam 0.29"
+      },
+      "api_gateway": {
+        "language": "Rust",
+        "framework": "Axum",
+        "auth": "JWT validation",
+        "rate_limiting": "Token bucket per tier"
+      },
+      "ai_llm": {
+        "primary": "Anthropic Claude (latest)",
+        "fallback_1": "Google Gemini (latest)",
+        "fallback_2": "OpenAI (latest)",
+        "schema": "ALICE-SDF llm_schema module"
+      }
+    },
+    "database": {
+      "primary": "Supabase (PostgreSQL 15)",
+      "connection_pooling": "PgBouncer",
+      "auth": "Supabase Auth",
+      "storage": "Supabase Storage"
+    },
+    "caching": {
+      "evaluation_cache": "ALICE-Cache",
+      "cdn": "ALICE-CDN + Cloudflare"
+    },
+    "billing": {
+      "provider": "Stripe",
+      "features": ["subscriptions", "usage_billing", "invoices", "webhooks"],
+      "pricing": "operator-configurable (no hardcoded amounts)",
+      "plan_config_source": "database (plan_configs table) or environment variables"
+    },
+    "infrastructure": {
+      "container": "Docker",
+      "orchestration": "Kubernetes 1.28+ (AWS EKS / GCP GKE / Azure AKS / k3s / self-hosted)",
+      "cloud_providers": ["aws", "gcp", "azure", "self-hosted"],
+      "ci_cd": "GitHub Actions",
+      "dns": "ALICE-DNS + Cloudflare (or provider-native)",
+      "ingress": "Cloudflare Tunnel (or provider-native ingress)",
+      "one_click_deploy": {
+        "docker_compose": "docker compose up -d",
+        "helm": "helm install ai-modeler ./charts/ai-modeler",
+        "railway": "one-click deploy button",
+        "render": "one-click deploy button"
+      },
+      "database_options": ["Supabase Cloud (managed)", "Self-hosted Supabase", "AWS RDS", "GCP Cloud SQL", "Azure Database"]
+    },
+    "observability": {
+      "telemetry": "ALICE-Semantic-Telemetry",
+      "tracing": "OpenTelemetry",
+      "dashboards": "Grafana",
+      "alerting": "PagerDuty / Opsgenie"
+    }
+  },
+  "performance_targets": {
+    "sdf_eval_256_grid_ms": 16,
+    "webgpu_fps_1080p": 60,
+    "webgpu_fps_4k": 30,
+    "mesh_gen_256_mc_sec": 3,
+    "mesh_gen_256_dc_sec": 5,
+    "api_read_p95_ms": 200,
+    "api_write_p95_ms": 500,
+    "cold_start_sec": 5,
+    "wgsl_compile_ms": 500,
+    "text_to_3d_simple_sec": 5,
+    "text_to_3d_complex_sec": 15,
+    "collab_sync_latency_ms": 100,
+    "websocket_connect_ms": 500,
+    "websocket_message_latency_ms": 50
+  },
+  "scalability_targets": {
+    "concurrent_users": 10000,
+    "sdf_engine_min_replicas": 2,
+    "sdf_engine_max_replicas": 16,
+    "hpa_cpu_target_percent": 70,
+    "database_max_connections": 500
+  },
+  "security_requirements": {
+    "tls_version": "1.3",
+    "jwt_access_token_ttl_min": 15,
+    "jwt_refresh_token_ttl_days": 7,
+    "api_key_encryption": "AES-256",
+    "compliance": ["OWASP Top 10", "GDPR", "SOC 2 Type II (Enterprise)"],
+    "password_hashing": "bcrypt (via Supabase)",
+    "csp_headers": true,
+    "cors_strict": true
+  },
+  "reliability_targets": {
+    "uptime_sla_percent": 99.9,
+    "uptime_sla_enterprise_percent": 99.95,
+    "backup_frequency": "daily",
+    "backup_retention_days": 30,
+    "rpo_hours": 1,
+    "rto_hours": 4
+  },
+  "alice_sdf_capabilities": {
+    "node_types_total": 126,
+    "primitives": {
+      "count": 72,
+      "categories": [
+        "basic (7): Sphere, Box3d, Cylinder, Torus, Plane, Capsule, Cone",
+        "extended (30): Rounded variants, Pyramid, Octahedron, Link, etc.",
+        "platonic (8): Tetrahedron, Dodecahedron, Icosahedron, etc.",
+        "tpms (9): Gyroid, Schwarz-P, Diamond, Neovius, Lidinoid, IWP, FRD, S, PMY",
+        "2d (6): Circle, Rect, Segment, Polygon, Annular"
+      ]
+    },
+    "operations": {
+      "count": 24,
+      "categories": [
+        "standard (3): Union, Intersection, Subtraction",
+        "smooth (3): SmoothUnion, SmoothIntersection, SmoothSubtraction",
+        "chamfer (3): ChamferUnion, ChamferIntersection, ChamferSubtraction",
+        "stairs (3): StairsUnion, StairsIntersection, StairsSubtraction",
+        "exp_smooth (3): ExpSmoothUnion, ExpSmoothIntersection, ExpSmoothSubtraction",
+        "columns (3): ColumnsUnion, ColumnsIntersection, ColumnsSubtraction",
+        "special (6): Xor, Morph, Pipe, Engrave, Groove, Tongue"
+      ]
+    },
+    "transforms": {
+      "count": 7,
+      "list": ["Translate", "RotateEuler", "RotateQuat", "Scale", "ScaleNonUniform", "ProjectiveTransform", "LatticeDeform", "SdfSkinning"]
+    },
+    "modifiers": {
+      "count": 23,
+      "list": ["Twist", "Bend", "Repeat", "RepeatFinite", "Mirror", "MirrorOctant", "IFS", "Noise", "Displacement", "HeightmapDisplacement", "SurfaceRoughness", "Sweep", "Extrude", "Revolution", "PolarRepeat", "IcosahedralSymmetry", "Taper", "Shell", "Onion"]
+    },
+    "evaluation_modes": [
+      "interpreted",
+      "compiled_scalar",
+      "compiled_simd_8wide",
+      "compiled_bvh",
+      "compiled_soa",
+      "jit_native_cranelift",
+      "gpu_compute_wgpu"
+    ],
+    "io_formats": [
+      "asdf", "asdf_json", "obj", "glb", "fbx", "usd",
+      "alembic", "stl", "ply", "3mf", "abm", "nanite"
+    ],
+    "mesh_methods": [
+      "marching_cubes",
+      "adaptive_marching_cubes",
+      "dual_contouring",
+      "gpu_marching_cubes"
+    ],
+    "shader_targets": ["wgsl", "glsl", "hlsl"],
+    "tests_passing": 1003,
+    "clippy_warnings": 0,
+    "doc_warnings": 0
+  },
+  "alice_eco_system_integration": {
+    "bridges": [
+      {
+        "file": "bridge_sdf.rs",
+        "source": "ALICE-SDF",
+        "targets": ["Analytics", "DB", "Edge", "Cache"],
+        "bridges_count": 5
+      },
+      {
+        "file": "bridge_physics.rs",
+        "source": "ALICE-SDF",
+        "targets": ["ALICE-Physics"],
+        "purpose": "Collision mesh generation"
+      },
+      {
+        "file": "bridge_codec.rs",
+        "source": "ALICE-SDF",
+        "targets": ["ALICE-Codec"],
+        "purpose": "3D wavelet compression"
+      },
+      {
+        "file": "bridge_asp.rs",
+        "source": "ALICE-SDF",
+        "targets": ["ALICE-Streaming-Protocol"],
+        "purpose": "Real-time asset delivery"
+      },
+      {
+        "file": "bridge_cache.rs",
+        "source": "ALICE-SDF",
+        "targets": ["ALICE-Cache"],
+        "purpose": "Evaluation result caching"
+      },
+      {
+        "file": "bridge_font.rs",
+        "source": "ALICE-Font",
+        "targets": ["ALICE-SDF"],
+        "purpose": "Text/glyph SDF conversion"
+      }
+    ],
+    "pipelines": [
+      {
+        "path": "B-1",
+        "name": "Asset Delivery",
+        "flow": "SDF → CDN → Cache"
+      },
+      {
+        "path": "G",
+        "name": "AI Inference",
+        "flow": "ML → TRT → SDF"
+      }
+    ]
+  }
+}
