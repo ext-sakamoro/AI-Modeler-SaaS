@@ -199,6 +199,13 @@ Dual licensed:
 
 See [LICENSE](./LICENSE) for the AGPL-3.0 text.
 
+## Related Projects
+
+| Project | Description | Link |
+|---------|-------------|------|
+| **ALICE-Eco-System** | 52-component integration layer (bridges, pipelines) | [ext-sakamoro/ALICE-Eco-System](https://github.com/ext-sakamoro/ALICE-Eco-System) |
+| **ALICE-SDF** | Core SDF engine (126 node types, 7 eval modes, 15 formats) | [ext-sakamoro/ALICE-SDF](https://github.com/ext-sakamoro/ALICE-SDF) |
+
 ## Documentation
 
 See [specs/](./specs/) for detailed specifications:
