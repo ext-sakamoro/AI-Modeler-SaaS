@@ -3,7 +3,7 @@ use axum::{
         ws::{Message, WebSocket, WebSocketUpgrade},
         Path, State,
     },
-    response::{Json, IntoResponse},
+    response::{IntoResponse, Json},
     routing::{get, post},
     Router,
 };
@@ -170,7 +170,8 @@ async fn handle_ws(socket: WebSocket, state: Arc<AppState>, session_id: String) 
             if let Message::Text(text) = msg {
                 // Validate and normalize message structure
                 if let Ok(parsed) = serde_json::from_str::<CollabMessage>(&text) {
-                    let normalized = serde_json::to_string(&parsed).unwrap_or_else(|_| text.to_string());
+                    let normalized =
+                        serde_json::to_string(&parsed).unwrap_or_else(|_| text.to_string());
                     let _ = tx_clone.send(normalized);
                 } else {
                     let _ = tx_clone.send(text.to_string());

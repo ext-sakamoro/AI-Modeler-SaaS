@@ -252,10 +252,7 @@ async fn rate_mw(
     Ok(next.run(req).await)
 }
 
-async fn forward(
-    url: &str,
-    req: Request,
-) -> Result<Response, (StatusCode, Json<Err>)> {
+async fn forward(url: &str, req: Request) -> Result<Response, (StatusCode, Json<Err>)> {
     let client = reqwest::Client::new();
     let path = req.uri().path().to_owned();
     let q = req
@@ -293,8 +290,8 @@ async fn forward(
         )
     })?;
 
-    let st = StatusCode::from_u16(resp.status().as_u16())
-        .unwrap_or(StatusCode::INTERNAL_SERVER_ERROR);
+    let st =
+        StatusCode::from_u16(resp.status().as_u16()).unwrap_or(StatusCode::INTERNAL_SERVER_ERROR);
     let rh = resp.headers().clone();
     let rb = resp.bytes().await.map_err(|e| {
         (

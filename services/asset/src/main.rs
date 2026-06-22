@@ -1,7 +1,7 @@
 use axum::{
     extract::{Path, State},
     http::StatusCode,
-    response::{Json, IntoResponse},
+    response::{IntoResponse, Json},
     routing::{get, post},
     Router,
 };
@@ -213,10 +213,7 @@ async fn download_asset(
             return Ok((
                 [
                     (axum::http::header::CONTENT_TYPE, content_type.to_owned()),
-                    (
-                        axum::http::header::CONTENT_DISPOSITION,
-                        disposition,
-                    ),
+                    (axum::http::header::CONTENT_DISPOSITION, disposition),
                 ],
                 data,
             ));
@@ -228,8 +225,18 @@ async fn download_asset(
 
 async fn list_formats() -> Json<FormatsResponse> {
     let formats = vec![
-        fmt("OBJ", "obj", "mesh", "Wavefront OBJ - Universal mesh format"),
-        fmt("STL", "stl", "mesh", "Stereolithography - 3D printing standard"),
+        fmt(
+            "OBJ",
+            "obj",
+            "mesh",
+            "Wavefront OBJ - Universal mesh format",
+        ),
+        fmt(
+            "STL",
+            "stl",
+            "mesh",
+            "Stereolithography - 3D printing standard",
+        ),
         fmt("GLB", "glb", "mesh", "glTF Binary - Web/game engine format"),
         fmt(
             "FBX",
