@@ -7,8 +7,7 @@
   "status": "draft",
   "license": {
     "public": "AGPL-3.0",
-    "commercial": "Proprietary (direct sales)",
-    "rationale": "AGPL-3.0 prevents SaaS free-riding by requiring source disclosure; enterprises purchase Commercial License for closed-source deployment"
+    "commercial": "Proprietary (direct sales)"
   },
   "author": "Spec System (Automated)",
   "requirements_count": 20,

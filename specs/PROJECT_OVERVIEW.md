@@ -58,29 +58,9 @@ AI Modeler SaaS bridges these gaps by combining:
 | **Indie Studios** | Rapid prototyping | Text-to-3D, agent-assisted modeling, one-click export |
 | **Enterprise (Licensed)** | Closed-source product integration | Commercial License, no AGPL obligation, dedicated support |
 
-## Licensing Strategy
+## License
 
-### Dual License Model
-
-AI Modeler SaaS uses a **dual licensing** strategy to protect the technology while keeping it open-source:
-
-| License | Target | Key Obligation |
-|---------|--------|---------------|
-| **AGPL-3.0** (Public) | Community, researchers, indie devs | SaaS operators must publish entire service source code |
-| **Commercial License** (Proprietary) | Enterprises (Adobe, Google, NVIDIA, etc.) | No source disclosure — closed-source deployment permitted |
-
-**Why AGPL-3.0?**
-
-The AGPL-3.0 "network use" clause is the strongest copyleft weapon against free-riding:
-- Any entity operating this code as a service (SaaS) must release the **complete source code** of their service
-- Large enterprises with proprietary codebases (Adobe, Google, NVIDIA, AWS, etc.) **cannot accept this** — they must purchase a Commercial License
-- Cloud providers (AWS, GCP, Azure) cannot offer "managed ALICE SDF" without licensing
-- The community gets full open-source access; corporations pay for the right to keep their code private
-
-**Commercial License Revenue**:
-- Sold directly by the copyright holder
-- Pricing negotiated per contract (enterprise scale, potentially significant per-deal)
-- Includes: no AGPL obligation, priority support, SLA, custom integration
+AGPL-3.0 (public) + Commercial License (proprietary). See [LICENSE](../LICENSE).
 
 ## Business Model
 
@@ -93,12 +73,6 @@ All plan pricing is **operator-configurable** — no hardcoded amounts in the co
 | **Free** | Limited | Basic | Basic formats (OBJ, STL) | Limited | Community support |
 | **Pro** | Expanded | Full resolution | All 15 formats | Higher | All 126 node types, text-to-3D, API access |
 | **Enterprise** | Unlimited | Maximum | All + custom | Unlimited | SSO, private instance, SLA, dedicated support |
-
-### Revenue Streams
-1. **SaaS Subscriptions**: Stripe-powered recurring billing (operator sets prices)
-2. **Commercial Licenses**: Direct enterprise sales (AGPL-3.0 bypass, high-value contracts)
-3. **Usage-Based Billing**: Compute-heavy operations (mesh generation, GPU evaluation)
-4. **Support Contracts**: Priority/dedicated support tiers
 
 ## Key Metrics (Success Criteria)
 
@@ -148,17 +122,6 @@ All plan pricing is **operator-configurable** — no hardcoded amounts in the co
 - ALICE-Eco-System integration (CDN, Cache, Analytics)
 - Terrain, destruction, advanced analysis
 - Load testing and optimization
-
-## Competitive Landscape
-
-| Competitor | Strengths | Our Advantage |
-|-----------|-----------|---------------|
-| Blender (free) | Full 3D suite, huge community | Cloud-native, no install, text-to-3D, real-time collab |
-| Shapr3D | iPad-native CAD | SDF-native workflow, 126 primitives, API access |
-| OpenSCAD | Programmatic CSG | No coding required, real-time preview, LLM integration |
-| Spline.design | Web-based 3D | SDF engine (not mesh-based), 15 export formats, SIMD performance |
-| Meshy.ai | AI 3D generation | SDF precision (not mesh approximation), parametric editing, deterministic output |
-| AWS/GCP managed 3D | Cloud scale | AGPL-3.0 prevents them from offering closed-source forks without licensing |
 
 ## Related Documents
 

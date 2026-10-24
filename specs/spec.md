@@ -9,25 +9,9 @@ The platform combines three foundational components:
 - **OmniCreatorTemplate** (Next.js 15): SaaS platform with 50+ agents, Supabase, Stripe billing
 - **ALICE-Eco-System**: 63 bridge modules connecting 51 ALICE crates via zero-copy pipelines
 
-## Licensing Strategy
+## License
 
-### Dual License Model
-
-| License | Target | Obligation | Revenue |
-|---------|--------|-----------|---------|
-| **AGPL-3.0** (Public) | Open-source community, researchers, startups | Anyone running this code as a SaaS **must publish their entire service source code** | Free (viral copyleft protection) |
-| **Commercial License** (Proprietary) | Enterprises (Adobe, Google, NVIDIA, etc.) | No source code disclosure required; private/closed-source deployment permitted | Negotiated per-contract (direct sales) |
-
-**Why AGPL-3.0?**
-- AGPL-3.0's "network use" clause means that any entity operating AI Modeler SaaS (or a derivative) on a server must release the complete source code of their service to its users
-- Large enterprises with proprietary codebases cannot accept this obligation — they **must** purchase a Commercial License to use ALICE-SDF in their products/services
-- This prevents "free-riding" by cloud providers (AWS, Google Cloud, Azure) and tech giants while keeping the project fully open-source for the community
-
-**Commercial License**:
-- Sold directly by the copyright holder (Moroya Sakamoto)
-- Grants right to use, modify, and deploy without AGPL-3.0 disclosure obligations
-- Pricing negotiated per contract (enterprise scale)
-- Includes priority support, SLA guarantees, and custom integration assistance
+AGPL-3.0 (public) + Commercial License (proprietary). See [LICENSE](../LICENSE).
 
 ## Creation Info
 
@@ -527,14 +511,6 @@ See `API_SPECIFICATION.md` for complete endpoint documentation with request/resp
 | LLM generates invalid SDF trees | MEDIUM | HIGH | Server-side validation + auto-repair; constrained output schema |
 | Real-time collab conflict resolution | HIGH | MEDIUM | Operational transform on tree patches; lock-based fallback |
 | SDF engine pod autoscaling latency | MEDIUM | LOW | Warm pool of pre-started engine pods; request queuing |
-
-### Business Risks
-
-| Risk | Impact | Probability | Mitigation |
-|------|--------|-------------|------------|
-| Low conversion Free → Pro | HIGH | MEDIUM | Feature-gated preview quality; generous free trial |
-| Compute costs exceed revenue | HIGH | LOW | Usage-based billing for heavy operations; spot instances |
-| Competition from existing 3D SaaS | MEDIUM | HIGH | Differentiate on SDF-native workflow + text-to-3D |
 
 ### Schedule Risks
 
