@@ -192,12 +192,9 @@ All endpoints are accessible through the API Gateway at `:8080`. Authentication 
 
 ## License
 
-Dual licensed:
+`LicenseRef-Proprietary`. The text is [LICENSE-Proprietary](LICENSE-Proprietary).
 
-- **AGPL-3.0** (public) -- SaaS operators must publish complete service source code
-- **Commercial License** (proprietary) -- contact for closed-source deployment
-
-See [LICENSE](./LICENSE) for the AGPL-3.0 text.
+Enquiries: https://extoria.co.jp/
 
 ## Related Projects
 
