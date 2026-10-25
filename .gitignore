@@ -47,3 +47,4 @@ coverage/
 export-data/
 redis-data/
 supabase-db-data/
+*.tsbuildinfo

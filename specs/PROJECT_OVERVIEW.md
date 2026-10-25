@@ -9,7 +9,7 @@ A cloud-native 3D modeling platform that democratizes procedural geometry creati
 ## Problem Statement
 
 1. **Steep Learning Curves**: Traditional 3D modeling tools (Blender, Maya, ZBrush) require months of training
-2. **Coding Barrier**: Procedural/parametric modeling (OpenSCAD, Houdini VEX) requires programming skills
+2. **Coding Barrier**: Procedural/parametric modeling (OpenSCAD, Houdini VEX) requires programming knowledge
 3. **No Real-Time SDF SaaS**: No existing cloud service provides real-time SDF evaluation with WebGPU rendering
 4. **Export Fragmentation**: Artists need multiple tools to export to different formats (OBJ, GLB, FBX, USD, STL...)
 5. **Collaboration Gap**: 3D model collaboration lacks real-time sync capabilities comparable to Figma/Google Docs
