@@ -7,7 +7,7 @@
 - **Updated**: 2026-02-23
 - **Status**: Core Implemented (21/21 E2E tests passing)
 - **OpenAPI Version**: 3.1.0
-- **License**: AGPL-3.0 (public) + Commercial License (proprietary)
+- **License**: LicenseRef-Proprietary (see LICENSE-Proprietary)
 
 > **Implementation Note**: Endpoints marked with **[LIVE]** are fully implemented and tested.
 > Endpoints marked with **[PLANNED]** are specified but not yet implemented.

@@ -143,7 +143,7 @@ All endpoints are accessible through the API Gateway at `:8080`. Authentication 
 | Method | Path | Description |
 |--------|------|-------------|
 | GET | `/health` | Gateway health check |
-| GET | `/license` | AGPL-3.0 license info |
+| GET | `/license` | License info (LicenseRef-Proprietary) |
 
 ## Frontend Pages
 

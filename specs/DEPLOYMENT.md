@@ -6,7 +6,7 @@
 - **Created**: 2026-02-23
 - **Updated**: 2026-02-23
 - **Status**: Core Implemented
-- **License**: AGPL-3.0 (public) + Commercial License (proprietary)
+- **License**: LicenseRef-Proprietary (see LICENSE-Proprietary)
 
 ---
 
@@ -93,7 +93,6 @@ x-common-env: &common-env
   SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_KEY}
   REDIS_URL: ${REDIS_URL:-redis://redis:6379}
   LOG_LEVEL: ${LOG_LEVEL:-info}
-  LICENSE_MODE: ${LICENSE_MODE:-agpl}
 
 services:
   # ── Frontend ───────────────────────────────────────────
@@ -444,7 +443,6 @@ maintainers:
 
 ```yaml
 global:
-  license: agpl-3.0  # agpl-3.0 | commercial
   domain: ai-modeler.localhost
   tls: false  # Set true for production
 
@@ -889,8 +887,6 @@ ingress:
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `LICENSE_MODE` | `agpl` | License mode (`agpl` or `commercial`) |
-| `LICENSE_KEY` | `` | Commercial license key (required if LICENSE_MODE=commercial) |
 
 ---
 
@@ -905,8 +901,6 @@ ingress:
 # ================================================================
 
 # ── License ──────────────────────────────────────────────
-LICENSE_MODE=agpl
-# LICENSE_KEY=  # Set if LICENSE_MODE=commercial
 
 # ── Supabase (Required) ─────────────────────────────────
 SUPABASE_URL=http://localhost:8000
@@ -1150,4 +1144,3 @@ All methods result in a fully functional AI Modeler SaaS instance with:
 - Text-to-3D generation
 - 15-format export
 - Stripe billing (configurable pricing)
-- AGPL-3.0 license compliance

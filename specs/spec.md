@@ -9,26 +9,6 @@ The platform combines three foundational components:
 - **OmniCreatorTemplate** (Next.js 15): SaaS platform with 50+ agents, Supabase, Stripe billing
 - **ALICE-Eco-System**: 63 bridge modules connecting 51 ALICE crates via zero-copy pipelines
 
-## Licensing Strategy
-
-### Dual License Model
-
-| License | Target | Obligation | Revenue |
-|---------|--------|-----------|---------|
-| **AGPL-3.0** (Public) | Open-source community, researchers, startups | Anyone running this code as a SaaS **must publish their entire service source code** | Free (viral copyleft protection) |
-| **Commercial License** (Proprietary) | Enterprises (Adobe, Google, NVIDIA, etc.) | No source code disclosure required; private/closed-source deployment permitted | Negotiated per-contract (direct sales) |
-
-**Why AGPL-3.0?**
-- AGPL-3.0's "network use" clause means that any entity operating AI Modeler SaaS (or a derivative) on a server must release the complete source code of their service to its users
-- Large enterprises with proprietary codebases cannot accept this obligation — they **must** purchase a Commercial License to use ALICE-SDF in their products/services
-- This prevents "free-riding" by cloud providers (AWS, Google Cloud, Azure) and tech giants while keeping the project fully open-source for the community
-
-**Commercial License**:
-- Sold directly by the copyright holder (Moroya Sakamoto)
-- Grants right to use, modify, and deploy without AGPL-3.0 disclosure obligations
-- Pricing negotiated per contract (enterprise scale)
-- Includes priority support, SLA guarantees, and custom integration assistance
-
 ## Creation Info
 
 - **Created**: 2026-02-23
@@ -112,8 +92,6 @@ The platform combines three foundational components:
   - **Free**: Limited projects, basic preview, basic export formats, limited API calls
   - **Pro**: Expanded limits, full preview resolution, all export formats, higher API rate
   - **Enterprise**: Unlimited usage, SSO, custom deployment, SLA, dedicated support
-
-  Note: Under AGPL-3.0, any operator deploying this SaaS must publish their service source code. Operators who wish to keep their deployment private must obtain a Commercial License.
 
 **Acceptance Criteria**:
 - Stripe Checkout integration works for all configured tiers
@@ -551,8 +529,7 @@ See `API_SPECIFICATION.md` for complete endpoint documentation with request/resp
 - ALICE-SDF v1.1.0 is production-stable with 1,003 passing tests, 0 clippy warnings, 0 doc warnings
 - OmniCreatorTemplate provides battle-tested SaaS infrastructure (Supabase, Stripe, agent system)
 - ALICE-Eco-System bridge_sdf.rs provides ready-made Analytics/DB/Edge/Cache bridges
-- **License: AGPL-3.0 (public) + Commercial License (proprietary, direct sales)**
-- AGPL-3.0 prevents cloud providers and enterprises from deploying closed-source forks without purchasing a commercial license
+- **License: LicenseRef-Proprietary** (see LICENSE-Proprietary)
 - All pricing is operator-configurable — no hardcoded dollar amounts in the codebase
 - Deployable on AWS, Google Cloud, Azure, or any Kubernetes-compatible infrastructure
 - Supabase can be used as managed service or self-hosted

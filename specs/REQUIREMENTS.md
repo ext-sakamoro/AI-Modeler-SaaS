@@ -6,7 +6,7 @@
 - **Created**: 2026-02-23
 - **Updated**: 2026-02-23
 - **Status**: Phase 1 In Progress (Core Platform Implemented)
-- **License**: AGPL-3.0 (public) + Commercial License (proprietary, direct sales)
+- **License**: LicenseRef-Proprietary (see LICENSE-Proprietary)
 
 ---
 
@@ -121,8 +121,6 @@
 - **Priority**: HIGH
 - **Category**: Business
 - **Description**: Stripe-powered subscription management with **fully configurable pricing**. All plan names, prices, limits, and feature gates are set by the operator at deployment time via admin dashboard or environment variables. No dollar amounts are hardcoded in the codebase.
-
-  **AGPL-3.0 Compliance Note**: Any third-party operator deploying this SaaS must publish their full service source code under AGPL-3.0, unless they hold a Commercial License.
 
 | Feature | Free | Pro | Enterprise |
 |---------|------|-----|------------|

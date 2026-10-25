@@ -62,7 +62,7 @@ export default function HomePage() {
       </main>
 
       <footer className="border-t border-border px-6 py-4 text-center text-sm text-muted-foreground">
-        AI Modeler SaaS — Powered by ALICE-SDF v1.1.0 — AGPL-3.0 + Commercial License
+        AI Modeler SaaS — Powered by ALICE-SDF v1.1.0
       </footer>
     </div>
   );

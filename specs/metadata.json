@@ -5,11 +5,7 @@
   "updated_at": "2026-02-23T00:00:00+09:00",
   "version": "1.1.0",
   "status": "draft",
-  "license": {
-    "public": "AGPL-3.0",
-    "commercial": "Proprietary (direct sales)",
-    "rationale": "AGPL-3.0 prevents SaaS free-riding by requiring source disclosure; enterprises purchase Commercial License for closed-source deployment"
-  },
+  "license": "LicenseRef-Proprietary",
   "author": "Spec System (Automated)",
   "requirements_count": 20,
   "functional_requirements": 15,
@@ -54,16 +50,16 @@
   "dependencies": {
     "alice_sdf": {
       "version": "1.1.0",
-      "path": "/Users/ys/ALICE-SDF",
-      "license": "AGPL-3.0 (public) + Commercial License (proprietary)"
+      "repository": "ALICE-SDF",
+      "license": "LicenseRef-Proprietary"
     },
     "omni_creator_template": {
-      "path": "/Users/ys/OmniCreatorTemplate",
+      "repository": "OmniCreatorTemplate",
       "stack": ["Next.js 15", "React 19", "Supabase", "Stripe"]
     },
     "alice_eco_system": {
       "version": "0.3.0",
-      "path": "/Users/ys/ALICE-Eco-System",
+      "repository": "ALICE-Eco-System",
       "bridges_used": [
         "bridge_sdf",
         "bridge_physics",

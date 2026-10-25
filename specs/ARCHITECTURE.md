@@ -6,7 +6,7 @@
 - **Created**: 2026-02-23
 - **Updated**: 2026-02-23
 - **Status**: Core Implemented (21/21 E2E tests passing)
-- **License**: AGPL-3.0 (public) + Commercial License (proprietary, direct sales)
+- **License**: LicenseRef-Proprietary (see LICENSE-Proprietary)
 
 ---
 
@@ -361,10 +361,9 @@ Request → API Gateway → Tier Check Middleware → Service
                               └── Fail → 403 Forbidden + upgrade prompt
 ```
 
-**AGPL-3.0 License Enforcement**:
-- A license notice is embedded in all API responses via `X-License: AGPL-3.0` header
-- `/license` endpoint serves the full AGPL-3.0 text and source code access instructions
-- Commercial License holders are identified by a `license_key` in their configuration
+**License notice**:
+- API responses carry an `X-License: LicenseRef-Proprietary` header
+- The `/license` endpoint returns the licence identifier
 
 ---
 
@@ -630,7 +629,7 @@ OPENAI_API_KEY=sk-...
 | | Kubernetes | 1.28+ | Orchestration (EKS/GKE/AKS/k3s) |
 | | GitHub Actions | — | CI/CD |
 | | Cloudflare Tunnel | — | Ingress (or provider-native) |
-| **License** | AGPL-3.0 | — | Public license (SaaS copyleft) |
+| **License** | LicenseRef-Proprietary | — | See LICENSE-Proprietary |
 | | Commercial | — | Enterprise license (direct sales) |
 
 ### Deployment
